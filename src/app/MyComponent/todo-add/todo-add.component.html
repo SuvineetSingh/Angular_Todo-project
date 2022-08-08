@@ -1,0 +1,16 @@
+<div class="my-3">
+    <h3>Add a todo</h3>
+    <!-- (ngSubmit) will prevent thee page from reloading after clicking on submit button -->
+    <form (ngSubmit) = "onSubmit()"> 
+        <div class="mb-3">
+            <label for="title" class="form-label">Task name:</label>
+            <input type="text" [(ngModel)] = "title" class="form-control" id="title" name="title" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="desc" class="form-label">Task Description:</label>
+            <!--  [(ngModel)] = "desc" would throw an error, so you have to add a module called "FormsModule" in app.module.ts, in imports section -->
+            <input type="desc" class="form-control" id="desc" name="desc" [(ngModel)] = "desc" >
+        </div>
+        <button type="submit" class="btn btn-sm btn-primary">Add</button>
+    </form>
+</div>

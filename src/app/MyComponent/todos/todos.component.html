@@ -1,0 +1,13 @@
+<div class="container">
+    <h1 class="text-center mb-3">Todo List</h1>
+    <app-todo-add (todoAdd)="addTodo($event)"></app-todo-add>
+    <h3>Your Todo</h3>
+    <div *ngIf="this.todos.length==0; else elseBlock">Nothing to do more. *cricket noise</div>
+    <ng-template #elseBlock>
+        <!-- this is a for loop directive, not exactly a for loop but its function is of a for loop -->
+        <div *ngFor="let todo of todos">
+            <app-todos-item [todo]="todo" (todoDelete)="deleteTodo($event)"></app-todos-item>
+            <!-- whenever this event occurs, fire this event and it will call this function -->
+        </div>
+    </ng-template>
+</div>
