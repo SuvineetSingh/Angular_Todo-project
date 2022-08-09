@@ -1,0 +1,31 @@
+Title: Angular Todo Project
+Subtitle: I built this small project to learn about the functionality of the framework Angular, how to learn it and implement it to better it's understanding.
+
+Overview: 
+I am gonna provide a walkthrough through the whole project to help you better understand the project and the framework.
+npm version - 8.15.1
+node version - 16.16.0
+bootstrap - 5.2.0
+
+Content-
+After you have initialized your project in angular, you will open a page on your localpage which will be your home page. If you open the code file, you will notice an index.page file.
+That page is the entry point/ home page of your project. Inside that page you will see the usual boiler-plate of a HTML file. But near the end, you will notice a tag "<app-root></app-root>". 
+This tag will redirect the compiler towards the compiler to the app.component.html file.
+Angular is used to create SPA(Single Page Application), to create that experience it's application has tree of components. These components are functionalities with each component feeding into one.
+So when the compiler reads the <app-root> tag it will go to the app.component.html and read the HTML there.
+I have used bootstrap to quickly add design and spend more time on angular and less on CSS, so I have added a template of navbar there. We can see the <nav> tags there which are used mainly for navbar which help in easy navigation of the website.
+There are 3 functionalities on the navbar- Home, About and search bar.
+When you click on the home button, i have routed it to the home page(index.html) and the "about" button routes towards the about page.
+Now after the nav tag, the compiler will read <app-todos> tag.
+Now this is a custom component that the developer will create. You have to write this command- ng generate component <Main branch Component name>/<Component Name>. You could also write ng g c to save time.
+Next the compiler will read <app-todos>, which will take the compiler to the todos component that I created, it will read the todos.component.html page. 
+There inside the main div, we will see the command- <app-todo-add (todoAdd)="addTodo($event)"></app-todo-add>, in this command- when it recieves a todo object and we click the Add button, it will call the addTodo function and store it in the (todoAdd). In the app.component.ts file, the function gets called and the todo gets added into the stack.
+In th todos.component.ts file we have a bit more functions, we have imported core angular features and the todo object. Then in the export TodosComponent class we have initialised the todos as of Todo[] object type and a localItem as a string to store the todos. In the constructor, we have basically written is, first we are parsing and storing it dynamically using this keyword. Then if localString is null, the object will be empty, else it will be added to the object. We have used this.todos to store in the current todo.
+Then we have created 3 functions: deleteTodo, addTodo,toggleTodo
+deleteTodo: this will delete a todo by first getting the index of the todo, then by splice method it removes that index. And finally I used the stringify in-built method to convert it into string.
+addTodo: this will push the todo into the this.todos and then convert it into a string and strore it in the localStorage of the browser.
+toggleTodo: this is a new function that I am adding that will have an option of mark as done, and when you check that it will have a strikethrough line across it.
+Coming back to the flow- we were in todos.component.html, so here after that the compiler will read ngif and elseBlock, this is a angular ng directive and works exactly like if-else block. Basically what it is used to delete the todo, if this.todos.length is 0, then it will display no todos. But if it's more than 0, then we can delete those. I have also used ngFor directive, that works as normal for loop to delete todo.
+I have also used event emitters here, that will emit the event to the main app.component.ts. 
+I am currently working on adding the mark as done feature.
+
